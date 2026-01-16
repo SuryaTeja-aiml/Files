@@ -58,19 +58,28 @@ Strassen 7 intermediate products ($P_1$ nunchi $P_7$) create chesthadu.
 
 Trick To Remember: https://youtu.be/HO7tEhH_Dlg
 
-Strassen formulas:
-$$P_1 = A_{11}(B_{12} - B_{22})$$
-$$P_2 = (A_{11} + A_{12})B_{22}$$
-$$P_3 = (A_{21} + A_{22})B_{11}$$
-$$P_4 = A_{22}(B_{21} - B_{11})$$
-$$P_5 = (A_{11} + A_{22})(B_{11} + B_{22})$$
-$$P_6 = (A_{12} - A_{22})(B_{21} + B_{22})$$
-$$P_7 = (A_{11} - A_{21})(B_{11} + B_{12})$$
+## Strassen formulas:
+$$
+\begin{aligned}
+P_1 &= A_{11}(B_{12} - B_{22}) \\
+P_2 &= B_{22}(A_{11} + A_{12}) \\
+P_3 &= B_{11}(A_{21} + A_{22}) \\
+P_4 &= A_{22}(B_{21} - B_{11}) \\
+P_5 &= (A_{11} + A_{22})(B_{11} + B_{22}) \\
+P_6 &= (A_{12} - A_{22})(B_{21} + B_{22}) \\
+P_7 &= (A_{11} - A_{21})(B_{11} + B_{12})
+\end{aligned}
+$$
 ### Final Combination
-$$C_{11} = P_5 + P_4 - P_2 + P_6$$
-$$C_{12} = P_1 + P_2$$
-$$C_{21} = P_3 + P_4$$
-$$C_{22} = P_5 + P_1 - P_3 - P_7$$
+$$
+\begin{aligned}
+C_{11} &= P_5 + P_4 - P_2 + P_6 \\
+C_{12} &= P_1 + P_2 \\
+C_{21} &= P_3 + P_4 \\
+C_{22} &= P_5 + P_1 - P_3 - P_7
+\end{aligned}
+$$
+
 
 
 **Result:** 8 Multiplications → 7 Multiplications ✅
@@ -157,12 +166,24 @@ Strassen be like:
 
 ---
 Example:
-Multiply these 2 matrices using Strassen's Method:
-$$A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix}$$
+## Multiply these 2 matrices using Strassen's Method:
+$$
+A =
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix},
+\quad
+B =
+\begin{bmatrix}
+5 & 6 \\
+7 & 8
+\end{bmatrix}
+$$
 **Step 1:** Calculate $P_1$ to $P_7$:
 $$P_1 = 1(6 - 8) = 1(-2) = -2$$
-$$P_2 = (1 + 2)8 = 3 \times 8 = 24$$
-$$P_3 = (3 + 4)5 = 7 \times 5 = 35$$
+$$P_2 = 8(1 + 2) = 8 \times 3 = 24$$
+$$P_3 = 5(3 + 4) = 5 \times 7 = 35$$
 $$P_4 = 4(7 - 5) = 4 \times 2 = 8$$
 $$P_5 = (1 + 4)(5 + 8) = 5 \times 13 = 65$$
 $$P_6 = (2 - 4)(7 + 8) = (-2) \times 15 = -30$$
@@ -173,7 +194,14 @@ $$C_{12} = P_1 + P_2 = -2 + 24 = 22$$
 $$C_{21} = P_3 + P_4 = 35 + 8 = 43$$
 $$C_{22} = P_5 + P_1 - P_3 - P_7 = 65 - 2 - 35 + 22 = 50$$
 **Final Result:**
-$$C = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}$$
+$$
+C =
+\begin{bmatrix}
+19 & 22 \\
+43 & 50
+\end{bmatrix}
+$$
+
 
 Python Implementation:
 ```python
